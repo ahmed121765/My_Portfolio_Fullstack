@@ -23,7 +23,7 @@ class FrontendController extends Controller
         $service_cats = Service::all();
         $experiences = Resume::where('resume_cat', 'experience')->get();
         $eductions = Resume::where('resume_cat', 'education')->get();
-        $skills = Skill::all();
+        $skills = Skill::latest()->take(6)->get();
         $testimonys = Testinomial::all();
         $blogs = BlogPost::withCount([
             'comments' => function ($query) {
